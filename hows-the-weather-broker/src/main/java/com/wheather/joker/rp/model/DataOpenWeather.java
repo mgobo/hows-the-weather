@@ -6,7 +6,7 @@ public class DataOpenWeather {
 
 	private Long data_id;
 	private String city;
-	private Long geopoints;
+	private String geopoints;
 	private String zipCode;
 	private Long cityId;
 	
@@ -29,10 +29,10 @@ public class DataOpenWeather {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	public Long getGeopoints() {
+	public String getGeopoints() {
 		return geopoints;
 	}
-	public void setGeopoints(Long geopoints) {
+	public void setGeopoints(String geopoints) {
 		this.geopoints = geopoints;
 	}
 	public String getZipCode() {

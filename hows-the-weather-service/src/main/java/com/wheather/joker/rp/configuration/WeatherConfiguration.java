@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 public class WeatherConfiguration {
 
 	@Bean
-	private RestTemplate restTemplate(RestTemplateBuilder builder) {
+	public RestTemplate restTemplate(RestTemplateBuilder builder) {
 		return builder.build();
 	}
 	
