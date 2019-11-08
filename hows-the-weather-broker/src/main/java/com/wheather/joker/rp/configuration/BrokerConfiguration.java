@@ -16,17 +16,17 @@ public class BrokerConfiguration {
 	private static final String PASSWORD = "w2019";
 	
 	@Bean
-	private ActiveMQConnectionFactory connectionFactory() throws JMSException {
+	public ActiveMQConnectionFactory connectionFactory() throws JMSException {
 		ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory();
 		connectionFactory.setBrokerURL(URL);
 		connectionFactory.setUser(USERNAME);
 		connectionFactory.setPassword(PASSWORD);
-		
+	
 		return connectionFactory;
 	}
 	
 	@Bean
-	private DefaultJmsListenerContainerFactory jmsListenerContainerFactory() throws JMSException {
+	public DefaultJmsListenerContainerFactory jmsListenerContainerFactory() throws JMSException {
 		DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
 		factory.setConnectionFactory(this.connectionFactory());
 		factory.setConcurrency("3-10");
@@ -35,7 +35,7 @@ public class BrokerConfiguration {
 	}
 	
 	@Bean
-	private JmsTemplate jmsTemplate() throws JMSException {
+	public JmsTemplate jmsTemplate() throws JMSException {
 		JmsTemplate jmsTemplate = new JmsTemplate();
 		jmsTemplate.setConnectionFactory(this.connectionFactory());
 		return jmsTemplate;

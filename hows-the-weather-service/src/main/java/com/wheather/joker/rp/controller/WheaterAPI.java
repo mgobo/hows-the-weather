@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.google.gson.Gson;
-import com.wheather.joker.rp.model.OpenWeather;
+import com.wheather.joker.rp.wmodel.OpenWeather;
 
 @RequestMapping(path="/weather")
 @RestController

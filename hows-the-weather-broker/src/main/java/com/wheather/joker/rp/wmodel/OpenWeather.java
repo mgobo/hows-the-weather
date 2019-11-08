@@ -1,13 +1,6 @@
-package com.wheather.joker.rp.model;
+package com.wheather.joker.rp.wmodel;
 
 import java.io.Serializable;
-
-import com.wheather.joker.rp.wmodel.Clouds;
-import com.wheather.joker.rp.wmodel.Coord;
-import com.wheather.joker.rp.wmodel.Main;
-import com.wheather.joker.rp.wmodel.Sys;
-import com.wheather.joker.rp.wmodel.Weather;
-import com.wheather.joker.rp.wmodel.Wind;
 
 public class OpenWeather implements Serializable {
 
