@@ -9,6 +9,7 @@ public class DataOpenWeather {
 	private String geopoints;
 	private String zipCode;
 	private Long cityId;
+	private String result;
 	
 	private OpenWeather openWeather;
 	public Long getData_id() {
@@ -46,5 +47,12 @@ public class DataOpenWeather {
 	}
 	public void setCityId(Long cityId) {
 		this.cityId = cityId;
-	} 
+	}
+	public String getResult() {
+		return result;
+	}
+	public void setResult(String result) {
+		this.result = result;
+	}
+	
 }

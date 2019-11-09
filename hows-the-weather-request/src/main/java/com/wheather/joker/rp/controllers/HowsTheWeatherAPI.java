@@ -29,7 +29,7 @@ public class HowsTheWeatherAPI {
 		String json = GSON.toJson(dataOpenWeather, DataOpenWeather.class);
 		brokerQ.message(json, "city_sent");
 		
-		return ResponseEntity.ok("Your search about city was scheduled...");
+		return ResponseEntity.ok("Your search about city was scheduled, your code = ["+dataOpenWeather.getData_id()+"]...");
 	}
 	
 	@GetMapping(path = "/geopoints/{lat}/{lgt}")
@@ -42,7 +42,7 @@ public class HowsTheWeatherAPI {
 		String json = GSON.toJson(dataOpenWeather, DataOpenWeather.class);
 		brokerQ.message(json, "geopoints_sent");
 		
-		return ResponseEntity.ok("Your search about geopoints was scheduled...");
+		return ResponseEntity.ok("Your search about geopoints was scheduled, your code = ["+dataOpenWeather.getData_id()+"]...");
 	}
 	
 	@GetMapping(path = "/zipcode/{zipcode}")
@@ -54,7 +54,7 @@ public class HowsTheWeatherAPI {
 		String json = GSON.toJson(dataOpenWeather, DataOpenWeather.class);
 		brokerQ.message(json, "zipcode_sent");
 		
-		return ResponseEntity.ok("Your search about zipcode was scheduled...");
+		return ResponseEntity.ok("Your search about zipcode was scheduled, your code = ["+dataOpenWeather.getData_id()+"]");
 	}
 	
 	@GetMapping(path = "/cityId/{id}")
@@ -67,7 +67,7 @@ public class HowsTheWeatherAPI {
 		String json = GSON.toJson(dataOpenWeather, DataOpenWeather.class);
 		brokerQ.message(json, "id_sent");
 		
-		return ResponseEntity.ok("Your search about city id was scheduled...");
+		return ResponseEntity.ok("Your search about city id was scheduled, your code = ["+dataOpenWeather.getData_id()+"]");
 	}
 	
 }
