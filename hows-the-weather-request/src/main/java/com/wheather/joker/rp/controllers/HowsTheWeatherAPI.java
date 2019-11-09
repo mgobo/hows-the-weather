@@ -45,11 +45,12 @@ public class HowsTheWeatherAPI {
 		return ResponseEntity.ok("Your search about geopoints was scheduled, your code = ["+dataOpenWeather.getData_id()+"]...");
 	}
 	
-	@GetMapping(path = "/zipcode/{zipcode}")
-	public ResponseEntity<String> zipcode(@PathVariable("zipcode")String zipcode)throws Exception{
+	@GetMapping(path = "/zipcode/{zipcode}/{country}")
+	public ResponseEntity<String> zipcode(@PathVariable("zipcode")String zipcode,
+										  @PathVariable("country")String country) throws Exception{
 		DataOpenWeather dataOpenWeather = new DataOpenWeather();
 		dataOpenWeather.setData_id(System.currentTimeMillis());
-		dataOpenWeather.setZipCode(zipcode);
+		dataOpenWeather.setZipCode(zipcode+","+country);
 		
 		String json = GSON.toJson(dataOpenWeather, DataOpenWeather.class);
 		brokerQ.message(json, "zipcode_sent");
