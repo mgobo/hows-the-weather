@@ -3,6 +3,7 @@ package com.wheather.joker.rp.consumer;
 import javax.jms.JMSException;
 import javax.jms.TextMessage;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.annotation.JmsListener;
@@ -18,6 +19,8 @@ import com.wheather.joker.rp.model.DataOpenWeather;
 @Component
 public class ConsumerWeatherBroker {
 	
+	private static final Logger LOGGER = Logger.getLogger(ConsumerWeatherBroker.class);
+	
 	@Autowired
 	private BrokerQ brokerQ;
 	
@@ -25,7 +28,7 @@ public class ConsumerWeatherBroker {
 	public void cityPoint(TextMessage message) {
 		try {
 			String msg = message.getBody(String.class);
-			System.out.println("City_sent: "+msg);
+			LOGGER.info("City_sent: "+msg);
 			BuildJsonObject<DataOpenWeather> build = new BuildJsonObject<>();
 			DataOpenWeather dataOpenWeather = build.buildToObject(msg, DataOpenWeather.class);
 			WeatherAPI weatherAPI = new WeatherAPI();
@@ -33,14 +36,14 @@ public class ConsumerWeatherBroker {
 			String json = null;
 			try {
 				json = weatherAPI.city(dataOpenWeather, build);
-				System.out.println(json);
+				LOGGER.info("City_result = "+json);
 			}catch(RestClientException ex) {
 				dataOpenWeather.setResult("Error on request = "+ex.getMessage());
 				json = build.buildResult(dataOpenWeather);
 			}
 			brokerQ.message(json, "city_result");
 		}catch(JMSException ex) {
-			
+			LOGGER.error("Error on broker, endpoint \"city_sent\" is unavailable, cause = "+ex.getMessage());
 		}
 	}
 	
@@ -48,7 +51,7 @@ public class ConsumerWeatherBroker {
 	public void geopointPoint(TextMessage message) {
 		try {
 			String msg = message.getBody(String.class);
-			System.out.println("Geopoints_sent: "+msg);
+			LOGGER.info("Geopoints_sent: "+msg);
 			BuildJsonObject<DataOpenWeather> build = new BuildJsonObject<>();
 			DataOpenWeather dataOpenWeather = build.buildToObject(msg, DataOpenWeather.class);
 			WeatherAPI weatherAPI = new WeatherAPI();
@@ -56,14 +59,14 @@ public class ConsumerWeatherBroker {
 			String json = null;
 			try {
 				json = weatherAPI.geopoints(dataOpenWeather, build);
-				System.out.println(json);
+				LOGGER.info("Geopoints_result = "+json);
 			}catch(RestClientException ex) {
 				dataOpenWeather.setResult("on request = "+ex.getMessage());
 				json = build.buildResult(dataOpenWeather);
 			}
 			brokerQ.message(json, "geopoints_result");
 		}catch(JMSException ex) {
-			
+			LOGGER.error("Error on broker, endpoint \"geopoints_sent\" is unavailable, cause = "+ex.getMessage());
 		}
 	}
 	
@@ -71,7 +74,7 @@ public class ConsumerWeatherBroker {
 	public void zipcodePoint(TextMessage message) {
 		try {
 			String msg = message.getBody(String.class);
-			System.out.println("Zipcode_sent: "+msg);
+			LOGGER.info("Zipcode_sent: "+msg);
 			BuildJsonObject<DataOpenWeather> build = new BuildJsonObject<>();
 			DataOpenWeather dataOpenWeather = build.buildToObject(msg, DataOpenWeather.class);
 			WeatherAPI weatherAPI = new WeatherAPI();
@@ -79,14 +82,14 @@ public class ConsumerWeatherBroker {
 			String json = null;
 			try {
 				json = weatherAPI.zipcode(dataOpenWeather, build);
-				System.out.println(json);
+				LOGGER.info("Zipcode_result = "+json);
 			}catch(RestClientException ex) {
 				dataOpenWeather.setResult("Error on request = "+ex.getMessage());
 				json = build.buildResult(dataOpenWeather);
 			}
 			brokerQ.message(json, "zipcode_result");
 		}catch(JMSException ex) {
-			
+			LOGGER.error("Error on broker, endpoint \"zipcode_sent\" is unavailable, cause = "+ex.getMessage());
 		}
 	}
 	
@@ -94,7 +97,7 @@ public class ConsumerWeatherBroker {
 	public void cityIdPoint(TextMessage message) {
 		try {
 			String msg = message.getBody(String.class);
-			System.out.println("CityId_sent: "+msg);
+			LOGGER.info("CityId_sent: "+msg);
 			BuildJsonObject<DataOpenWeather> build = new BuildJsonObject<>();
 			DataOpenWeather dataOpenWeather = build.buildToObject(msg, DataOpenWeather.class);
 			WeatherAPI weatherAPI = new WeatherAPI();
@@ -102,14 +105,14 @@ public class ConsumerWeatherBroker {
 			String json = null;
 			try {
 				json = weatherAPI.cityId(dataOpenWeather, build);
-				System.out.println(json);
+				LOGGER.info("CityId_result = "+json);
 			}catch(RestClientException ex) {
 				dataOpenWeather.setResult("Error on request = "+ex.getMessage());
 				json = build.buildResult(dataOpenWeather);
 			}
 			brokerQ.message(json, "id_result");
 		}catch(JMSException ex) {
-			
+			LOGGER.error("Error on broker, endpoint \"id_sent\" is unavailable, cause = "+ex.getMessage());
 		}
 	}
 	

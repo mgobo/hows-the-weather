@@ -1,6 +1,7 @@
 package com.wheather.joker.rp.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +23,9 @@ public class HowsTheWeatherAPI {
 	@GetMapping(path = "/city/{name}/{country}")
 	public ResponseEntity<String> city(@PathVariable("name")String name,
 									   @PathVariable("country")String country) throws Exception{
+		if(name == null || name.equals(""))return new ResponseEntity<>("Invalid URL",HttpStatus.BAD_REQUEST);
+		if(country == null || country.equals(""))return new ResponseEntity<>("Invalid URL",HttpStatus.BAD_REQUEST);
+		
 		DataOpenWeather dataOpenWeather = new DataOpenWeather();
 		dataOpenWeather.setData_id(System.currentTimeMillis());
 		dataOpenWeather.setCity(name+","+country);
@@ -35,6 +39,9 @@ public class HowsTheWeatherAPI {
 	@GetMapping(path = "/geopoints/{lat}/{lgt}")
 	public ResponseEntity<String> geopoints(@PathVariable("lat")String lat,
 									        @PathVariable("lgt")String lgt) throws Exception{
+		if(lat == null || lat.equals(""))return new ResponseEntity<>("Invalid URL",HttpStatus.BAD_REQUEST);
+		if(lgt == null || lgt.equals(""))return new ResponseEntity<>("Invalid URL",HttpStatus.BAD_REQUEST);
+		
 		DataOpenWeather dataOpenWeather = new DataOpenWeather();
 		dataOpenWeather.setData_id(System.currentTimeMillis());
 		dataOpenWeather.setGeopoints(lat+","+lgt);
@@ -48,6 +55,9 @@ public class HowsTheWeatherAPI {
 	@GetMapping(path = "/zipcode/{zipcode}/{country}")
 	public ResponseEntity<String> zipcode(@PathVariable("zipcode")String zipcode,
 										  @PathVariable("country")String country) throws Exception{
+		if(zipcode == null || zipcode.equals(""))return new ResponseEntity<>("Invalid URL",HttpStatus.BAD_REQUEST);
+		if(country == null || country.equals(""))return new ResponseEntity<>("Invalid URL",HttpStatus.BAD_REQUEST);
+		
 		DataOpenWeather dataOpenWeather = new DataOpenWeather();
 		dataOpenWeather.setData_id(System.currentTimeMillis());
 		dataOpenWeather.setZipCode(zipcode+","+country);
@@ -60,7 +70,7 @@ public class HowsTheWeatherAPI {
 	
 	@GetMapping(path = "/cityId/{id}")
 	public ResponseEntity<String> cityId(@PathVariable("id")String id) throws Exception{
-		
+		if(id == null || id.equals(""))return new ResponseEntity<>("Invalid URL",HttpStatus.BAD_REQUEST);
 		DataOpenWeather dataOpenWeather = new DataOpenWeather();
 		dataOpenWeather.setData_id(System.currentTimeMillis());
 		dataOpenWeather.setCityId(new Long(id));
@@ -68,7 +78,7 @@ public class HowsTheWeatherAPI {
 		String json = GSON.toJson(dataOpenWeather, DataOpenWeather.class);
 		brokerQ.message(json, "id_sent");
 		
-		return ResponseEntity.ok("Your search about city id was scheduled, your code = ["+dataOpenWeather.getData_id()+"]");
+		return new ResponseEntity<>("Your search about city id was scheduled, your code = ["+dataOpenWeather.getData_id()+"]",HttpStatus.OK);
 	}
 	
 }
