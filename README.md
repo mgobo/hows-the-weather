@@ -9,7 +9,7 @@ Broker do projeto, nele estão as configurações do ConnectionFactory e Session
 
 É necessário criar o BROKER no artemis, para isso, siga os passos:
 
-> 1.1 Faça o download do Apache ActiveMQ Artemis no site da apache (require Apache ActiveMQ Artemis) 
+> 1.1 Faça o download do Apache ActiveMQ Artemis no site da apache ( require "Apache ActiveMQ Artemis" ) 
 
 > 1.2 Extraia o arquivo e acesse o diretório "bin";
 
@@ -43,11 +43,11 @@ Broker do projeto, nele estão as configurações do ConnectionFactory e Session
 > 3.3) Produzir mensagens com o resultado do consumo dos serviços da API "OpenWeather";  
 **O serviço está configurado para rodar na porta 8080;**
 
-**É necessário compilar o projeto**
+**É necessário compilar o projeto;**
 
-**O serviço foi desenvolvido utilizando SpringBoot, portanto, para publicá-lo basta executar o comando: java -jar hows-the-weather-service.jar**
+**O serviço foi desenvolvido utilizando SpringBoot, portanto, para publicá-lo basta executar o comando: java -jar hows-the-weather-service.jar;**
 
-**_O projeto possui um modelo de dados próprio que facilita a interação para o "dono da consulta". A cada requisição é devolvido ao usuário um "Identificador", este número é para recuperar o resultado da consulta realizada_**
+**_O projeto possui um modelo de dados próprio que facilita a interação para o "dono da consulta". A cada requisição é devolvido ao usuário um "Identificador", este número é para recuperar o resultado da consulta realizada**
 
 ##### Para rodar o projeto, é necessário:
 
@@ -80,14 +80,14 @@ execução de softwares escritos em Java;
   {
 	  role: "readWrite", db: "ws2019"
 	}
-]});_**
+]});**
 
 3. Compile os 3 projetos:
-> 3.1 **hows-the-weather-broker**;
+> 3.1 **hows-the-weather-broker;**
 
-> 3.2 **hows-the-weather-request**
+> 3.2 **hows-the-weather-request;**
 
-> 3.3 **hows-the-weather-service**
+> 3.3 **hows-the-weather-service;**
 
 4. Execute os projetos pelo terminal:
 
