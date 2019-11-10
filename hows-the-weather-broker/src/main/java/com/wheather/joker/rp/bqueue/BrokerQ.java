@@ -20,6 +20,19 @@ public class BrokerQ {
 	@Autowired
 	private ConnectionFactory connectionFactory;
 	
+	public boolean validateConnection() throws JMSException {
+		try(Connection connection = this.connectionFactory.createConnection()){
+			connection.start();
+			try(Session session   = connection.createSession(false, Session.AUTO_ACKNOWLEDGE)){
+				return true;
+			}catch(JMSException ex) {
+				throw new JMSException("Error on inside broker, [error] = "+ex.getMessage());
+			}
+		}catch(JMSException ex) {
+			throw new JMSException("Error on inside broker, [error] = "+ex.getMessage());
+		}
+	}
+	
 	public void message(String message, String queueName) throws JMSException {
 		try(Connection connection = this.connectionFactory.createConnection()){
 			connection.setClientID(queueName);
