@@ -42,8 +42,11 @@ Broker do projeto, nele estão as configurações do ConnectionFactory e Session
 > 2.3 Consumir mensagens da pilha de "entrega" do broker
 
 > 2.4 Registrar o resultado em um banco de dados qualquer (Para este projeto, foi utilizado Mongo Database CE);
+
 **O serviço está configurado para rodar na porta 8081;**
+
 **É necessário compilar o projeto;**
+
 **O serviço foi desenvolvido utilizando SpringBoot, portanto, para publicá-lo basta executar o comando: java -jar hows-the-weather-request.jar**
 
 **3. hows-the-weather-service (RestTemplate), responsável por:**
