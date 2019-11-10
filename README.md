@@ -3,13 +3,24 @@
 ##### Sobre o projeto:
 Consome dados da API aberta OpenWeather, utilizando um broker, api-rest e mongo database. 
 
-##### Tudo está dividido em 3 aplicações:
+##### Para rodar o projeto, é necessário:
+
+1. MongoDatabase CE        = Banco NoSQL de código aberto (https://docs.mongodb.com/manual/installation/)
+2. Apache ActiveMQ Artemis = Broker de código aberto fornecido pela APACHE (https://activemq.apache.org/components/artemis);
+3. JVM 8                   = Ambiente de código aberto fornecido pela Oracle para 
+execução de softwares escritos em Java;
+4. Maven                   = Empacotador de código aberto fornecido pela APACHE;
+
+## Organização do projeto:
+
+##### Dividido em 3 aplicações:
+
 **1. hows-the-weather-broker**
 Broker do projeto, nele estão as configurações do ConnectionFactory e Session, além do produtor da mensagem. Está aplicação utiliza ActiveMQ-Artemis;
 
 É necessário criar o BROKER no artemis, para isso, siga os passos:
 
-> 1.1 Faça o download do Apache ActiveMQ Artemis no site da apache ( require "Apache ActiveMQ Artemis" ) 
+> 1.1 Faça o download do Apache ActiveMQ Artemis no site da apache (https://activemq.apache.org/components/artemis) 
 
 > 1.2 Extraia o arquivo e acesse o diretório "bin";
 
@@ -48,14 +59,6 @@ Broker do projeto, nele estão as configurações do ConnectionFactory e Session
 **O serviço foi desenvolvido utilizando SpringBoot, portanto, para publicá-lo basta executar o comando: java -jar hows-the-weather-service.jar;**
 
 **_O projeto possui um modelo de dados próprio que facilita a interação para o "dono da consulta". A cada requisição é devolvido ao usuário um "Identificador", este número é para recuperar o resultado da consulta realizada**
-
-##### Para rodar o projeto, é necessário:
-
-1. MongoDatabase CE        = Banco NoSQL de código aberto (https://docs.mongodb.com/manual/installation/)
-2. Apache ActiveMQ Artemis = Broker de código aberto fornecido pela APACHE (https://activemq.apache.org/components/artemis);
-3. JVM 8                   = Ambiente de código aberto fornecido pela Oracle para 
-execução de softwares escritos em Java;
-4. Maven                   = Empacotador de código aberto fornecido pela APACHE;
 
 ##### Para consumir dados da API, siga os passos:
 1. Inicie o broker, para isso:
