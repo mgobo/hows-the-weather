@@ -1,13 +1,12 @@
 package com.wheather.joker.rp.commons;
 
 import com.google.gson.Gson;
-import com.wheather.joker.rp.model.DataOpenWeather;
 
 public class BuildJsonObject<T> {
 
-	public String buildResult(DataOpenWeather dataOpenWeather) {
+	public String buildResult(Object data) {
 		Gson gson 		= new Gson();
-		String result 	= gson.toJson(dataOpenWeather);
+		String result 	= gson.toJson(data);
 		return result;
 	}
 	

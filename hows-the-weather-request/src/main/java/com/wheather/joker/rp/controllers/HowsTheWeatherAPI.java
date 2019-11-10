@@ -1,8 +1,16 @@
 package com.wheather.joker.rp.controllers;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,14 +19,39 @@ import org.springframework.web.bind.annotation.RestController;
 import com.google.gson.Gson;
 import com.wheather.joker.rp.bqueue.BrokerQ;
 import com.wheather.joker.rp.model.DataOpenWeather;
+import com.wheather.joker.rp.nosql.WeatherResult;
 
+@CrossOrigin(value = "*")
 @RequestMapping(path = "howstheweather")
 @RestController
 public class HowsTheWeatherAPI {
 
 	@Autowired
 	private BrokerQ brokerQ;
+	
+	@Autowired
+	private MongoTemplate mongoTemplate;
+	
 	private static final Gson GSON = new Gson();
+	
+	@GetMapping(path = "/search/{code}")
+	public ResponseEntity<WeatherResult> search(@PathVariable("code")String code) throws Exception{
+		WeatherResult weatherResult = new WeatherResult();
+		weatherResult.setResult("Código ["+code+"] inválido");
+		
+		if(code.matches("[A-Za-z]+")) {
+			return new ResponseEntity<>(weatherResult, HttpStatus.BAD_REQUEST);
+		}	
+		
+		Query query 	  = new Query();
+		query.addCriteria(Criteria.where("_id").is(new Long(code)));
+		query.with(Sort.by(Sort.Direction.ASC, "_id"));
+		List<WeatherResult> collection = Optional.ofNullable(this.mongoTemplate.find(query, WeatherResult.class))
+												 .orElseThrow(()->new RuntimeException("Error on search code ["+code+"]"));
+		
+		WeatherResult wr = collection.stream().findFirst().get();
+		return new ResponseEntity<>(wr,HttpStatus.OK);
+	}
 	
 	@GetMapping(path = "/city/{name}/{country}")
 	public ResponseEntity<String> city(@PathVariable("name")String name,

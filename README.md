@@ -56,7 +56,7 @@ Broker do projeto, nele estão as configurações do ConnectionFactory e Session
 
 > 3.3) Produzir mensagens com o resultado do consumo dos serviços da API "OpenWeather";  
 
-**O serviço está configurado para rodar na porta 8080;**
+**O serviço está configurado para rodar na porta 8082;**
 
 **É necessário compilar o projeto;**
 
