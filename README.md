@@ -3,17 +3,17 @@
 a) Sobre o projeto:
  Consome dados da API aberta OpenWeather, utilizando um broker, api-rest e mongo database. 
 
- Tudo está dividido em 3 aplicações:
-  1)hows-the-weather-broker
-  Broker do projeto, nele estão as configurações do ConnectionFactory e Session, além do produtor da mensagem. Está aplicação utiliza ActiveMQ-Artemis;
-  É necessário criar o BROKER no artemis, para isso, siga os passos:
-    #1.1) Faça o download do Apache ActiveMQ Artemis no site da apache (b#2) 
-    #1.2) Extraia o arquivo e acesse o diretório "bin";
-    #1.3) Execute o comando: "./artemis create WEATHER-BROKER";
-      1.3.1) Defina o usuário de acesso do broker como "admin";
-      1.3.2) Defina a senha de acesso ao broker como "w2019";
-      1.3.3) Responda "N" para a pergunta que segue, pois o Broker não é acessado anônimamente;
-  Obs.: Não altere o usuário, a senha e o nome do broker, pois o projeto não funcionará sem que ajustes sejam feitos.
+**Tudo está dividido em 3 aplicações:**
+1. hows-the-weather-broker
+> Broker do projeto, nele estão as configurações do ConnectionFactory e Session, além do produtor da mensagem. Está aplicação utiliza ActiveMQ-Artemis;
+> É necessário criar o BROKER no artemis, para isso, siga os passos:
+> > 1.1 Faça o download do Apache ActiveMQ Artemis no site da apache (b#2) 
+> > 1.2 Extraia o arquivo e acesse o diretório "bin";
+> > 1.3 Execute o comando: "./artemis create WEATHER-BROKER";
+> > > 1.3.1 Defina o usuário de acesso do broker como "admin";
+> > > 1.3.2 Defina a senha de acesso ao broker como "w2019";
+> > > 1.3.3 Responda "N" para a pergunta que segue, pois o Broker não é acessado anônimamente;
+> **Obs.: Não altere o usuário, a senha e o nome do broker, pois o projeto não funcionará sem que ajustes sejam feitos.**
 
   2)hows-the-weather-request, responsável por:
      2.1) Receber requisições dos usuários através de um serviço rest;
@@ -43,11 +43,11 @@ execução de softwares escritos em Java;
 
 # Para consumir dados da API:
 Inicie o broker, para isso:
-  1) Acesse o diretório de instalação do ActiveMQ Artemis;
-  2) Acesse o diretório "bin";
-  3) Dentro do diretório "bin" é possível encontrar o diretório "WEATHER-BROKER", é preciso acessar este diretório;
-  4) Dentro do diretório "WEATHER-BROKER", acesse o diretório "bin";
-  5) Dentro do diretório "bin", execute o comando, "./artemis-service start"
+  1. Acesse o diretório de instalação do ActiveMQ Artemis;
+  2. Acesse o diretório "bin";
+  3. Dentro do diretório "bin" é possível encontrar o diretório "WEATHER-BROKER", é preciso acessar este diretório;
+  4. Dentro do diretório "WEATHER-BROKER", acesse o diretório "bin";
+  5. Dentro do diretório "bin", execute o comando, "./artemis-service start"
 
 # Main path = "howstheweather"
 # Consulta por cidade
