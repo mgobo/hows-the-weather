@@ -62,7 +62,7 @@ Broker do projeto, nele estão as configurações do ConnectionFactory e Session
 
 **O serviço foi desenvolvido utilizando SpringBoot, portanto, para publicá-lo basta executar o comando: java -jar hows-the-weather-service.jar;**
 
-**_O projeto possui um modelo de dados próprio que facilita a interação para o "dono da consulta". A cada requisição é devolvido ao usuário um "Identificador", este número é para recuperar o resultado da consulta realizada**
+**_O projeto possui um modelo de dados próprio que facilita a interação para o "dono da consulta". A cada requisição é devolvido ao usuário um "Identificador", este número é para recuperar o resultado da consulta realizada_**
 
 ##### Para consumir dados da API, siga os passos:
 1. Inicie o broker, para isso:
@@ -87,7 +87,7 @@ Broker do projeto, nele estão as configurações do ConnectionFactory e Session
   {
 	  role: "readWrite", db: "ws2019"
 	}
-]});**
+]});_**
 
 3. Compile os 3 projetos:
 > 3.1 **hows-the-weather-broker;**
