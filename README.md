@@ -29,6 +29,8 @@ Broker do projeto, nele estão as configurações do ConnectionFactory e Session
 > 2.2 Produzir mensagens na pilha de entrada do broker;
 
 > 2.3 Consumir mensagens da pilha de "entrega" do broker
+
+> 2.4 Registrar o resultado em um banco de dados qualquer (Para este projeto, foi utilizado Mongo Database CE);
 **O serviço está configurado para rodar na porta 8081;**
 **É necessário compilar o projeto;**
 **O serviço foi desenvolvido utilizando SpringBoot, portanto, para publicá-lo basta executar o comando: java -jar hows-the-weather-request.jar**
@@ -45,7 +47,7 @@ Broker do projeto, nele estão as configurações do ConnectionFactory e Session
 
 **O serviço foi desenvolvido utilizando SpringBoot, portanto, para publicá-lo basta executar o comando: java -jar hows-the-weather-service.jar**
 
-**_O projeto possui um modelo de dados próprio que facilita a interação para o "dono da consulta". A cada requisição é devolvido ao usuário o "Identificador" da sua requisição, este número é utilizado posteriormente para recuperar o resultado da consulta realizada_**
+**_O projeto possui um modelo de dados próprio que facilita a interação para o "dono da consulta". A cada requisição é devolvido ao usuário um "Identificador", este número é para recuperar o resultado da consulta realizada_**
 
 ##### Para rodar o projeto, é necessário:
 
@@ -55,13 +57,45 @@ Broker do projeto, nele estão as configurações do ConnectionFactory e Session
 execução de softwares escritos em Java;
 4. Maven                   = Empacotador de código aberto fornecido pela APACHE;
 
-##### Para consumir dados da API:
-Inicie o broker, para isso:
-  1. Acesse o diretório de instalação do ActiveMQ Artemis;
-  2. Acesse o diretório "bin";
-  3. Dentro do diretório "bin" é possível encontrar o diretório "WEATHER-BROKER", é preciso acessar este diretório;
-  4. Dentro do diretório "WEATHER-BROKER", acesse o diretório "bin";
-  5. Dentro do diretório "bin", execute o comando, "./artemis-service start"
+##### Para consumir dados da API, siga os passos:
+1. Inicie o broker, para isso:
+> 1.1 Acesse o diretório de instalação do ActiveMQ Artemis;
+
+> 1.2 Acesse o diretório "bin";
+
+> 1.3 Dentro do diretório "bin" é possível encontrar o diretório "WEATHER-BROKER", é preciso acessar este diretório;
+
+> 1.4 Dentro do diretório "WEATHER-BROKER", acesse o diretório "bin";
+
+> 1.5 Dentro do diretório "bin", execute o comando, "./artemis-service start"
+
+2. Registre o banco de dados
+> 2.1 Inicie o serviço do Mongo Database;
+
+> 2.2 Crie o banco de dados _w2019_ **(Execute o comando no terminal, "use w2019")**;
+
+> 2.3 Crie o usuário de acesso com permissão de leitura e escrita para banco de dados _w2019_, para isso, execute o script:
+
+**_db.createUser({user:"w2019",pwd:"w201XXX_#$$#19",roles:[
+  {
+	  role: "readWrite", db: "ws2019"
+	}
+]});_**
+
+3. Compile os 3 projetos:
+> 3.1 **hows-the-weather-broker**;
+
+> 3.2 **hows-the-weather-request**
+
+> 3.3 **hows-the-weather-service**
+
+4. Execute os projetos pelo terminal:
+
+> 4.1 java -jar hows-the-weather-request.jar
+
+> 4.2 java -jar hows-the-weather-service.jar
+
+5. Abra o navegador e envie uma requisição para cada **_endpoint_**;
 
 ##### Main path = "howstheweather"
 ##### Consulta por cidade
