@@ -13,7 +13,7 @@ execução de softwares escritos em Java;
 
 ## Organização do projeto:
 
-##### Dividido em 3 aplicações:
+##### Dividido em 4 aplicações:
 
 **1. hows-the-weather-broker**
 Broker do projeto, nele estão as configurações do ConnectionFactory e Session, além do produtor da mensagem. Está aplicação utiliza ActiveMQ-Artemis;
@@ -61,6 +61,16 @@ Broker do projeto, nele estão as configurações do ConnectionFactory e Session
 **É necessário compilar o projeto;**
 
 **O serviço foi desenvolvido utilizando SpringBoot, portanto, para publicá-lo basta executar o comando: java -jar hows-the-weather-service.jar;**
+
+**4. hows-the-weather-app, responsável por:**
+
+> Devolver o conteúdo das consultas realizadas em tela;
+
+> Aplicação simples, executada em um server app, escrita em HTML 5, CSS, Javascript;
+
+> Composta por 1 promisse jQuery que devolve o conteúdo do código consultado em texto;
+
+> Caso seja executada em um domínio específico diferente de localhost, modificar o **_host_** da promisse no arquivo **_index.jsp_**
 
 **_O projeto possui um modelo de dados próprio que facilita a interação para o "dono da consulta". A cada requisição é devolvido ao usuário um "Identificador", este número é para recuperar o resultado da consulta realizada_**
 
