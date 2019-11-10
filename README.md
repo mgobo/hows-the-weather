@@ -70,7 +70,7 @@ Broker do projeto, nele estão as configurações do ConnectionFactory e Session
 
 > Composta por 1 promisse jQuery que devolve o conteúdo do código consultado em texto;
 
-> Caso seja executada em um domínio específico diferente de localhost, modificar o **_host_** da promisse no arquivo **_index.jsp_**
+> Caso seja executada em um domínio específico diferente de localhost, modificar o **_host_** da promisse no arquivo **_index.jsp_**;
 
 **_O projeto possui um modelo de dados próprio que facilita a interação para o "dono da consulta". A cada requisição é devolvido ao usuário um "Identificador", este número é para recuperar o resultado da consulta realizada_**
 
