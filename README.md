@@ -9,7 +9,7 @@ Broker do projeto, nele estão as configurações do ConnectionFactory e Session
 
 É necessário criar o BROKER no artemis, para isso, siga os passos:
 
-> 1.1 Faça o download do Apache ActiveMQ Artemis no site da apache (b#2) 
+> 1.1 Faça o download do Apache ActiveMQ Artemis no site da apache (require Apache ActiveMQ Artemis) 
 
 > 1.2 Extraia o arquivo e acesse o diretório "bin";
 
@@ -103,7 +103,7 @@ execução de softwares escritos em Java;
 
 Ex.: _http://%YOUR_DOMAIN%/howstheweather/city/Ribeirao Preto/BR_
 
-# Consulta por geolocalidade
+##### Consulta por geolocalidade
 **%your_domain%/howstheweather/geopoints/{lat}/{lgt}**
 
 Ex.: _http://%YOUR_DOMAIN%/howstheweather/geopoints/-47.81/-21.18_
