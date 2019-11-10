@@ -83,7 +83,7 @@ Broker do projeto, nele estão as configurações do ConnectionFactory e Session
 
 > 2.3 Crie o usuário de acesso com permissão de leitura e escrita para banco de dados _w2019_, para isso, execute o script:
 
-**db.createUser({user:"w2019",pwd:"w201XXX__#$$#19",roles:[
+**db.createUser({user:"w2019",pwd:"w201XXX_#$$#19",roles:[
   {
 	  role: "readWrite", db: "ws2019"
 	}
