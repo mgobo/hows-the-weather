@@ -22,7 +22,7 @@ import com.wheather.joker.rp.model.DataOpenWeather;
 import com.wheather.joker.rp.nosql.WeatherResult;
 
 @CrossOrigin(value = "*")
-@RequestMapping(path = "howstheweather")
+@RequestMapping(path = "/howstheweather")
 @RestController
 public class HowsTheWeatherAPI {
 
