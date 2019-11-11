@@ -52,6 +52,7 @@ public class HowsTheWeatherProducerApplicationTests {
 									 .andExpect(status().isOk())
 									 .andReturn().getResponse().getContentAsString();
 			
+			System.out.println(result);
 			Assert.assertEquals("Test accepted", true, result != null);
 		}catch(Exception ex) {
 			Assert.fail("Test rejected, fail = "+ex.getMessage());
@@ -66,7 +67,8 @@ public class HowsTheWeatherProducerApplicationTests {
 			String result = this.mock.perform(get(HOST+"geopoints/"+lat+"/"+lgt))					 
    								     .andExpect(status().isOk())
 								     .andReturn().getResponse().getContentAsString();
-
+			
+			System.out.println(result);
 			Assert.assertEquals("Test accepted", true, result != null);
 		}catch(Exception ex) {
 			Assert.fail("Test rejected, fail = "+ex.getMessage());
@@ -82,6 +84,7 @@ public class HowsTheWeatherProducerApplicationTests {
 								     .andExpect(status().isOk())
 									 .andReturn().getResponse().getContentAsString();
 
+			System.out.println(result);
 			Assert.assertEquals("Test accepted", true, result != null);
 		}catch(Exception ex) {
 			Assert.fail("Test rejected, fail = "+ex.getMessage());
@@ -96,6 +99,7 @@ public class HowsTheWeatherProducerApplicationTests {
 									  .andExpect(status().isOk())
                                       .andReturn().getResponse().getContentAsString();
 			
+		     System.out.println(result);
 			Assert.assertEquals("Test accepted", true, result != null);
 		}catch(Exception ex) {
 			Assert.fail("Test rejected, fail = "+ex.getMessage());
