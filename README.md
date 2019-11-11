@@ -135,3 +135,8 @@ Ex.: _http://%YOUR_DOMAIN%/howstheweather/zipcode/14051220/br_
 
 Ex.: _http://%YOUR_DOMAIN%/howstheweather/cityId/3451328_
 
+##### Consulta de codigo devolvido
+**%your_domain%/howstheweather/search/{code}**
+
+Ex.: _http://%YOUR_DOMAIN%/howstheweather/search/1573441019539_
+
